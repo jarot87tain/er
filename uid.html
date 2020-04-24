@@ -1,0 +1,97 @@
+
+</body>
+<script type='text/javascript'>
+//<![CDATA[
+//Script Redirect CTRL + U
+//
+function redirectCU(e) {
+  if (e.ctrlKey && e.which == 85) {
+    window.location.replace("");
+    return false;
+  }
+}
+document.onkeydown = redirectCU;
+
+//Script Redirect Klik Kanan
+function redirectKK(e) {
+  if (e.which == 3) {
+    window.location.replace("");
+    return false;
+  }
+}
+document.oncontextmenu = redirectKK;
+//]]>
+</script>
+</body>
+<!DOCTYPE html>
+<title>ALATE TPX</title>
+<style>
+.mbuh,.resp{box-sizing:border-box}.rg-hed,.rg-source .post-colon{font-weight:700}*{font-family:sans-serif}.rg-source1{margin:0;font-size:.85em;text-align:right}.left,.rg-header{text-align:left}.resp{resize:none}.mbuh{margin:-5px;border:none;border-bottom:none}.line{margin:3px;padding:3px;border:0;border-bottom:1px dashed #ccc}.rg-container{font-family:Lato,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.4;margin:0;padding:1em .5em;color:#222}.rg-header{margin-bottom:1em}.rg-header>*{display:block}.rg-hed{font-size:1.4em}.rg-dek{font-size:1em}.rg-source{margin:0;font-size:.75em;text-align:right}.rg-source .pre-colon{text-transform:uppercase}table.rg-table{width:100%;margin-bottom:.5em;font-size:1em;border-collapse:collapse;border-spacing:0}table.rg-table tr{-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;border:0;font:inherit;vertical-align:baseline;text-align:left}table.rg-table td,table.rg-table th{padding:.35em;font-size:.9em}table.rg-table thead{border-bottom:3px solid #ddd}table.rg-table tr{border-bottom:1px solid #ddd;color:#222}table.rg-table tr.highlight{background-color:#dcf1f0!important}table.rg-table.zebra tr:nth-child(even){background-color:#f6f6f6}table.rg-table th{font-weight:700}table.rg-table .highlight td{font-weight:700}table.rg-table th.number,td.number{text-align:right}@media screen and (max-width:600px){table.rg-table,table.rg-table tbody{width:100%}.rg-container{max-width:600px;margin:0 auto}table.rg-table td.hide-mobile,table.rg-table th.hide-mobile,table.rg-table thead,table.rg-table tr.hide-mobile{display:none}table.rg-table td,table.rg-table th,table.rg-table tr{display:block;padding:0}table.rg-table tr{border-bottom:none;margin:0 0 1em;padding:.5em}table.rg-table tr.highlight{background-color:inherit!important}table.rg-table.zebra tr:nth-child(even){background-color:transparent}table.rg-table.zebra td:nth-child(even){background-color:#f6f6f6}table.rg-table tr:nth-child(even){background-color:transparent}table.rg-table td{padding:.5em 0 .25em;border-bottom:1px dotted #ccc;text-align:right}table.rg-table td[data-title]:before{font-weight:700;display:inline-block;content:attr(data-title);float:left;margin-right:.5em;font-size:.95em}table.rg-table td:last-child{padding-right:0;border-bottom:2px solid #ccc}table.rg-table td:empty{display:none}table.rg-table .highlight td{background-color:inherit;font-weight:400}}
+</style>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<body style="padding-top: 50px;">
+	<div class="container" style="width:700px;">
+		<div class="panel panel-info">
+			<div class="panel-heading"><strong>ALATE TPX</strong></div>
+			<div class="panel-body">
+			    <div class="panel-footer">
+				<strong class="rg-source">* Facebook UIDs</strong>
+				<textarea class="form-control input-sm ui rg-source1 left" id="uid" rows="10" autofocus=""></textarea><br>
+				<strong class="rg-source">* Access Token:</strong>
+				<input type="text" class="form-control input-sm rg-source1 left" placeholder="EAAWZA5YNHROMBABVZCAAeZAGCyv2...." id="access_token">
+<hr class="line">
+<button class="form-control btn btn-default btn-sm" id="btn"><strong>Filter Facebook UIDs</strong></button>
+</div></div>
+		</div><div class="col-md-12">
+						<div class="alert alert-info" id="result-msg" style="display: none;"></div>
+						<div id="msg" style="display: none;"><button class="btn btn-info btn-sm" style="float:right" type="submit"id="clr"><strong>Reset UIDs</strong></button></div>
+					</div>	
+		<table id="table_format" class="rg-table">
+<!--- <thead><tr><th>UIDs</th><th>Gender</th><th>Location</th></tr></thead><tbody></tbody> --->
+<thead><tr><th>UIDs</th></tr></thead><tbody id="display"></tbody>
+</table><div class='rg-source'><span class='pre-colon'>SOURCE</span>: <span class='post-colon'>Sources</span></div>
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+var tbody = $('#table_format tbody');
+$('.ui').prop('placeholder','#INFO, Filter Include: Australia, Austria, Belgium, Canada, Chile, Denmark, Finland, France, Germany, Hungary, Ireland, Italy, Netherlands, Spain, Sweden, Switzerland, United Kingdom, United States, Japan, Norway, Portugal, New Zealand, Romania');
+
+$("#btn").click(function() {
+var locale = ['Australia', 'Austria', 'Belgium', 'Canada', 'Chile', 'Denmark', 'Finland', 'France', 'Germany', 'Hungary', 'Ireland', 'Italy', 'Netherlands', 'Spain', 'Sweden', 'Switzerland', 'United Kingdom', 'United States','Japan','Norway','Portugal','New Zealand','Romania'];
+$("#result-msg").html('<img src="load.gif" width="30" height="30" /> Loading...').fadeIn("slow");
+var uid = $.trim($("#uid").val()).split("\n"),	access_token = $("#access_token").val(), lang = $("#lang").val();
+		for (var i = 0; i < uid.length; i++) {
+			var id = uid[i];
+			$.ajax({
+				url: 'https://graph.facebook.com/' + id,
+				data: {
+				    fields: 'id,name,gender,location{location}',
+					access_token: access_token
+				},
+				dataType: 'jsonp',
+				success: function(json){
+					var location = json.location;
+					if (typeof location == 'undefined') return;
+					location = location.location.country;
+					if (!locale.includes(location)) return;
+					if (!location) return;
+					var uid = json.id;
+					var gender = json.gender;
+					//tbody.append('<tr><td>' + uid + '</td><td>' + gender + '</td><td>' + location + '</td></tr>');
+					tbody.append('<tr><td>' + uid + '</td></tr>');
+					$("#result-msg").fadeOut("slow", function() {
+		                    $("#result-msg").empty().html('<img src="succ.png" width="20" height="20" /> Success!').fadeIn("slow");
+		                    $("#msg").fadeIn("slow");
+		                })
+				}
+			});
+		}
+    })
+$("#clr").click(function() {
+    tbody.html(''); $("#uid").val('');
+    $("#result-msg, #msg").fadeOut("slow");
+});
+});
+
+</script>
